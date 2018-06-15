@@ -1,0 +1,403 @@
+.portal-index {
+    height: 100%;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+.my-workbench {
+    height: 45px;
+    line-height: 45px;
+    font-size: 18px;
+    color: #333;
+    background: #f0f0f0;
+    text-indent: 10px;
+}
+
+table {
+    border: none;
+    margin-bottom: 1px;
+}
+
+td {
+    height: 40px;
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+    padding: 5px;
+    border-color: #dedede;
+}
+
+.form-key {
+    background-color: #f8f8f8;
+    background-clip: padding-box;
+}
+
+th {
+    height: 40px;
+    text-align: center;
+    font-size: 14px;
+    border-color: #dedede;
+}
+
+td i, th i {
+    color: red;
+    margin-right: 5px;
+    font-style: normal;
+}
+
+.datetimepicker i {
+    color: #000;
+    margin-right: 0;
+}
+
+td input[type="text"] {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #dedede;
+    text-indent: 10px;
+}
+
+td input[type="number"] {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #dedede;
+    text-indent: 10px;
+    outline: none;
+}
+
+td label {
+    margin: 0 15px;
+}
+
+td input[type="radio"] {
+    margin-right: 5px;
+    vertical-align: middle;
+    margin-top: 0;
+}
+
+td textarea {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #dedede;
+    box-sizing: border-box;
+    resize: none;
+    padding: 3px 5px;
+}
+
+td button {
+    width: 70px;
+    height: 30px;
+    margin: 0;
+}
+
+td .btn {
+    padding: 0;
+}
+
+td .photo {
+    width: 140px;
+    height: 150px;
+    margin: 0 auto;
+    margin-bottom: 7px;
+}
+
+td .photo img {
+    width: 100%;
+    height: 100%;
+}
+
+.form-wrapper {
+    height: 600px;
+}
+
+.box {
+    margin-bottom: 0;
+}
+
+.form-wrapper-scroll {
+    height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    padding-bottom: 20px;
+    overflow-y: auto;
+}
+
+.form-wrapper h1 {
+    height: 60px;
+    width: 100%;
+    font-size: 24px;
+    line-height: 60px;
+    text-align: center;
+    color: #666;
+    border-bottom: 1px solid #dedede;
+}
+
+.form-wrapper h3 {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #666;
+    position: relative;
+}
+
+.form-wrapper h3 div {
+    width: 100%;
+    height: 0;
+    border-top: 1px solid #dedede;
+    position: absolute;
+    left: 0;
+    top: 19px;
+}
+
+.form-wrapper h3 span {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    padding: 0 5px;
+    background: #fff;
+}
+
+.form-wrapper .form-content {
+    padding: 0 10px;
+}
+
+.footer-btn {
+    width: 100%;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.footer-btn button {
+    width: 100px;
+    height: 35px;
+    margin: 0 20px;
+}
+
+.operation-bar {
+    width: 100%;
+    height: 45px;
+    background: #f8f9fb;
+    padding: 7px 0;
+}
+
+.operation-bar button {
+    width: 70px;
+    height: 30px;
+    margin: 0 10px;
+    padding: 0;
+}
+
+.opinion_list .text-left {
+    padding: 5px 10px;
+}
+
+#opinion .person, #opinion .time {
+    text-align: right;
+    padding: 3px 20px;
+    font-size: 12px;
+}
+
+#opinion td .opinion-item {
+    border-top: 1px dotted #666;
+    padding: 10px 0;
+}
+
+#opinion td .opinion-item:first-child {
+    border-top: none;
+}
+
+.text-left {
+    text-align: left;
+}
+
+#opinion table tbody {
+    display: none;
+}
+
+#opinion table:first-child tbody {
+    display: block;
+}
+
+#opinion table thead td {
+    border: none;
+    padding: 0;
+    height: 30px;
+    width: 200px;
+}
+
+#opinion table:first-child thead {
+    display: none;
+}
+
+#opinion .opinion-arrow {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin: auto 0;
+    background: url(../images/opinion1.png) no-repeat center;
+    transition: all 0.2s linear;
+}
+
+#opinion .active .opinion-arrow {
+    transform: rotate(90deg);
+}
+
+#opinion table thead td div {
+    width: 45px;
+    position: relative;
+    cursor: pointer;
+}
+
+#opinion table thead td div:after {
+    content: "展开";
+    color: #6eb1f5;
+    position: absolute;
+    right: 0;
+    top: -4px;
+}
+
+#opinion table thead td.active div:after {
+    content: "收起";
+}
+
+/* 办理 */
+.handle {
+    width: 500px;
+    border: 1px solid #dedede;
+    box-sizing: border-box;
+    display: none;
+}
+
+.handle .opinion-inp {
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.handle .opinion-inp-title {
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+    color: #666;
+}
+
+.handle .opinion-inp textarea {
+    width: 100%;
+    min-height: 100px;
+    max-height: 300px;
+    resize: vertical;
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+
+.handle .handle-operate {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.handle .handle-operate button {
+    width: 70px;
+    height: 30px;
+    margin: 0 10px;
+    font-size: 12px;
+}
+
+.opinion-inp .warning {
+    position: absolute;
+    right: 30px;
+    bottom: 25px;
+    color: red;
+    display: none;
+}
+
+table td .input-hidden {
+    width: 0;
+    height: 0;
+    border: none;
+}
+
+label.error {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 9px;
+}
+
+.drop-down label.error {
+    padding-top: 4px;
+    right: 20px;
+}
+
+/* 日期插件 */
+.time-wrapper {
+    position: relative;
+}
+
+.time-wrapper input {
+    padding-right: 40px;
+}
+
+.time-wrapper .time-icon {
+    width: 40px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: url(../images/data.png) no-repeat center;
+    cursor: pointer;
+}
+
+.time-wrapper label.error {
+    right: 25px;
+}
+
+.uploadBtn {
+    position: relative;
+    overflow: hidden;
+}
+
+.uploadBtn .imgUpload {
+    width: 500px;
+    height: 200px;
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+    outline: none;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+td.drop-down-hidden {
+    width: 0px;
+}
+
+/* radio */
+.radio-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/checkBox.png) no-repeat;
+    background-position: 0 0;
+    margin: -5px 5px 0 0;
+}
+
+.checked .radio-icon {
+    background-position: -18px 0;
+}
+
+.password span {
+    line-height: 29px;
+}
+
+.password .btn {
+    float: right;
+    background: #6eb1f5;
+    color: #fff;
+}

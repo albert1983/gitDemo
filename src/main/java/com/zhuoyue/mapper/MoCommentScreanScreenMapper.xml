@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuoyue.dao.MoCommentScreanScreenMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhuoyue.bean.MoCommentScreanScreen">
+        <result column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="FILE_PATH" jdbcType="VARCHAR" property="filePath"/>
+        <result column="TYPE_FILE_ID" jdbcType="VARCHAR" property="typeFileId"/>
+        <result column="DES" jdbcType="VARCHAR" property="des"/>
+        <result column="MODEL_ROTATION" jdbcType="VARCHAR" property="modelRotation"/>
+        <result column="CAMERA_SIZE" jdbcType="VARCHAR" property="cameraSize"/>
+
+    </resultMap>
+
+    <sql id="BaseColumn">
+        ID,NAME,FILE_PATH,TYPE_FILE_ID,DES,MODEL_ROTATION,CAMERA_SIZE
+    </sql>
+
+
+    <insert id="saveScreanScreen" parameterType="com.zhuoyue.bean.MoCommentScreanScreen">
+        insert into MO_COMMENT_SCREAN_SCREEN
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="filePath != null">
+                FILE_PATH,
+            </if>
+            <if test="typeFileId != null">
+                TYPE_FILE_ID,
+            </if>
+            <if test="des != null">
+                DES,
+            </if>
+            <if test="modelRotation != null">
+                MODEL_ROTATION,
+            </if>
+            <if test="cameraSize != null">
+                CAMERA_SIZE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="filePath != null">
+                #{filePath,jdbcType=VARCHAR},
+            </if>
+            <if test="typeFileId != null">
+                #{typeFileId,jdbcType=VARCHAR},
+            </if>
+            <if test="des != null">
+                #{des,jdbcType=VARCHAR},
+            </if>
+            <if test="modelRotation != null">
+                #{modelRotation,jdbcType=VARCHAR},
+            </if>
+            <if test="cameraSize != null">
+                #{cameraSize,jdbcType=VARCHAR},
+
+            </if>
+        </trim>
+    </insert>
+
+
+</mapper>

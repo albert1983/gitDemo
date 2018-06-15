@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhuoyue.dao.HelloMapper">
+    <resultMap id="BaseResultMap" type="com.zhuoyue.bean.Hello">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="DELETED" property="deleted" jdbcType="INTEGER"/>
+        <result column="CITY_CODE" property="cityCode" jdbcType="VARCHAR"
+                typeHandler="com.zhuoyue.bean.enums.CityCodeEnumHandler"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID, USER_NAME, DELETED,CITY_CODE
+    </sql>
+
+    <insert id="insert" parameterType="com.zhuoyue.bean.Hello">
+        insert into T_HELLO (ID, USER_NAME, DELETED,CITY_CODE )
+        values (
+        #{id,jdbcType=VARCHAR},
+        #{userName,jdbcType=VARCHAR},
+        #{deleted,jdbcType=INTEGER},
+        #{cityCode,jdbcType=VARCHAR,typeHandler=com.zhuoyue.bean.enums.CityCodeEnumHandler}
+        )
+    </insert>
+
+
+</mapper>

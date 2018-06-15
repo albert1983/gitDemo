@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuoyue.dao.TestTableMapper">
+  <resultMap id="BaseResultMap" type="com.zhuoyue.bean.TestTable">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="FILE_NAME" jdbcType="VARCHAR" property="fileName" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zhuoyue.bean.TestTable">
+    <result column="FILES" jdbcType="BLOB" property="files" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    FILES
+  </sql>
+  <insert id="insert" parameterType="com.zhuoyue.bean.TestTable">
+    insert into TEST_TABLE (ID, FILE_NAME, CREATE_TIME, 
+      FILES)
+    values (#{id,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, 
+      #{files,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhuoyue.bean.TestTable">
+    insert into TEST_TABLE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="fileName != null">
+        FILE_NAME,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="files != null">
+        FILES,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null">
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="files != null">
+        #{files,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+  
+ 
+  
+  
+  
+</mapper>

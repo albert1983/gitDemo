@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuoyue.dao.MoCompHierarchyMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhuoyue.bean.MoCompHierarchy">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <id column="specialty" property="specialty" jdbcType="VARCHAR"/>
+        <id column="floor" property="floor" jdbcType="VARCHAR"/>
+        <id column="category" property="category" jdbcType="VARCHAR"/>
+        <id column="mode_id" property="modeId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <sql id="BaseColumn">
+        id,specialty,floor,category,mode_id
+    </sql>
+
+
+    <select id="getMoCompHierarchyListByModeId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumn"/>
+        FROM mo_comp_hierarchy mch
+        WHERE mch.mode_id=#{modeId}
+    </select>
+
+    <select id="getMoCompHierarchyListByModeIdIOS" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumn"/>
+        FROM mo_comp_hierarchy mch
+        WHERE mch.mode_id=#{modeId} and mch.category = '模拟IOS'
+    </select>
+</mapper>

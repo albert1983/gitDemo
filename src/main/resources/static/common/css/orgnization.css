@@ -1,0 +1,764 @@
+@charset "utf-8";
+
+.document-header {
+    width: 100%;
+    height: 44px;
+    background-color: #eee;
+    /*padding: 10px 0px 10px 10px;*/
+    position: relative;
+    color: #666;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.main-content {
+    height: 100%;
+    background: #f6f5f1;
+}
+
+#auth_user_list {
+    background: #fff;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #dedede;
+}
+
+.border-top-1 {
+    border-top: 1px solid #cccccc;
+}
+
+.row-line {
+    width: 96%;
+    height: 10px;
+}
+
+.divider {
+    width: 100%;
+    margin: 0px auto;
+}
+
+.tree-left {
+    width: 200px;
+    margin-right: 10px;
+    height: 100%;
+    border: 1px solid #ddd;
+    background: #fff;
+    padding-bottom: 190px;
+    overflow: hidden;
+}
+
+#treeview {
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+}
+
+.list-group-item {
+    border-left: none;
+    border-right: none;
+
+}
+
+.list-group-item:last-child, .list-group-item:first-child {
+    border-radius: 0;
+}
+
+.treeview li {
+    white-space: nowrap;
+    width: 198px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.treeview li.node-selected {
+    background-color: #4f8900 !important;
+}
+
+.table-right {
+    width: 816px;
+    overflow: hidden;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #dedede;
+    padding-bottom: 188px;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+.dis-none {
+    display: none
+}
+
+/* 表格样式  */
+#contact_list .user-list-header {
+    height: 42px;
+    line-height: 42px;
+    background: #f0f0f0;
+    border-bottom: 1px solid #dedede;
+}
+
+#contact_list .user-list-content {
+    height: 100%;
+    padding-bottom: 90px;
+}
+
+#contact_list .user-list-content ul {
+    height: 100%;
+    overflow: auto;
+}
+
+#contact_list .user-list-content ul li {
+    width: 100%;
+    border-bottom: 1px solid #dedede;
+    overflow: hidden;
+}
+
+#contact_list .user-list-header > div, #contact_list .user-list-content ul li > div {
+    float: left;
+    border-right: 1px solid #dedede;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#contact_list .user-list-content ul li > div {
+    height: 44px;
+}
+
+#contact_list .list-num {
+    width: 50px;
+}
+
+#contact_list .list-name {
+    padding: 0 5px;
+    width: 90px;
+}
+
+#contact_list .list-sex {
+    width: 50px;
+}
+
+#contact_list .list-phone {
+    width: 99px;
+}
+
+#contact_list .list-position {
+    padding: 0 5px;
+    width: 85px;
+}
+
+#contact_list .list-state {
+    width: 60px;
+}
+
+#contact_list .list-operate {
+    width: 370px;
+}
+
+#contact_list .user-list-content .list-operate {
+    padding: 8px 0;
+    line-height: 0;
+}
+
+.org-header {
+    vertical-align: middle;
+    height: 20px;
+}
+
+.table-button {
+    vertical-align: middle;
+    width: 65px;
+    height: 27px;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    background-color: #f3f3f3;
+    cursor: pointer;
+    outline: none;
+}
+
+.header-item {
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.header-check-item {
+    margin-left: 20px;
+    vertical-align: middle;
+    height: 28px;
+    display: inline-block;
+}
+
+.tree-header {
+    background-color: #f0f0f0;
+    height: 40px;
+    line-height: 30px;
+}
+
+.infor-header {
+    background-color: #f0f0f0;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #dedede;
+    font-size: 16px;
+}
+
+.tree-header div {
+    font-size: 16px;
+    vertical-align: middle;
+    margin-top: 6px;
+    margin-left: 10px;
+}
+
+.tree-header a {
+    text-align: right;
+    font-size: 16px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: 6px;
+    margin-right: 10px;
+    color: #4f8900;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.header-button {
+    margin-left: 10px;
+    vertical-align: middle;
+    width: 90px;
+    height: 30px;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+.org-button {
+    vertical-align: middle;
+    width: 66px;
+    height: 20px;
+    border: none;
+    border-right: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+    background-color: #f3f3f3;
+    cursor: pointer;
+    outline: none;
+}
+
+.org-button:hover {
+    background-color: #fff;
+}
+
+.header-button:hover {
+    background-color: #73ae23;
+    color: #fff;
+}
+
+.header-button:focus {
+
+}
+
+.btn-img {
+    display: block;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.input-search {
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    height: 28px;
+}
+
+.input-org {
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    height: 30px;
+    width: 240px;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+
+.span-org-hide {
+    display: inline-block;
+    height: 28px;
+    width: 240px;
+}
+
+.textarea-org {
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    width: 560px;
+    padding-left: 10px;
+    margin-left: 39px;
+    resize: none;
+}
+
+.org-div-item {
+    height: 56px;
+    vertical-align: middle;
+    padding: 14px 20px;
+    line-height: 30px;
+}
+
+/*设置模态对话框样式  */
+.mod-dialog {
+    display: none;
+}
+
+.dialog-content {
+    font-size: 12px;
+    background-color: #fff;
+    height: 560px;
+    padding-bottom: 20px;
+}
+
+.dialog-content a {
+    display: inline-block;
+    margin: 10px 0 0 20px;
+    width: 148px;
+    height: 148px;
+    overflow: hidden;
+}
+
+.dialog-content a img {
+    width: 148px;
+    height: 148px;
+}
+
+.dialog-content .right-content {
+    margin-top: 20px;
+    margin-left: 40px;
+    width: 380px;
+    height: 400px;
+    margin-right: 40px;
+}
+
+.dialog-content .img {
+    width: 128px;
+    height: 128px;
+}
+
+.dialog-content .info-title {
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #dfdfdf;
+    line-height: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.dialog-content .flow-wrap {
+    width: 640px;
+    line-height: 35px;
+    padding-bottom: 20px;
+}
+
+.mod-dialog .dialog-content .flow-name span {
+    display: inline-block;
+    width: 60px;
+    font-size: 14px;
+}
+
+.dialog-content .flow-name .item-edit-flow {
+    display: inline-block;
+    width: 280px;
+    height: 30px;
+    border: 1px solid #ccc;
+    padding: 5px 5px 5px 8px;
+    margin: 5px 5px;
+    resize: none;
+    vertical-align: middle;
+    outline: 0;
+}
+
+.dialog-content .flow-name .item-radio-flow {
+    display: inline-block;
+    width: 360px;
+    height: 30px;
+    padding: 2px 5px 2px 8px;
+    margin-top: 6px;
+    resize: none;
+    vertical-align: middle;
+    outline: 0;
+}
+
+.dialog-tip {
+    text-align: center;
+    border-top: 6px solid #85b347;
+    height: 108px;
+    line-height: 110px;
+    vertical-align: middle;
+}
+
+.star {
+    color: #f00;
+    transform: scale(0.6, 0.6);
+}
+
+/* checkbox */
+.sicon-checkbox {
+    width: 20px;
+    height: 20px;
+    background: url("../images/fileIcons.png") no-repeat;
+    background-position: -72px -7px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.sicon-checkbox.active {
+    background-position: -96px -7px;
+}
+
+.org-div-item .pull-left {
+    position: relative;
+}
+
+.error {
+    font-size: 12px;
+}
+
+#org_name-error {
+    position: absolute;
+    left: 75px;
+    top: 27px;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: #fff;
+}
+
+.box {
+    box-shadow: none;
+}
+
+.no-content-tip {
+    display: none;
+    width: 200px;
+    margin: 30px auto;
+    font-size: 14px;
+}
+
+.set-dialog {
+    display: none;
+}
+
+.set-dialog input {
+    border-radius: 3px;
+}
+
+.view-content .img-wrapper {
+    width: 128px;
+    height: 128px;
+    display: inline-block;
+    margin: 20px 10px;
+}
+
+.view-content .img-wrapper img {
+    width: 128px;
+    height: 128px;
+}
+
+.view-content .member-info {
+    width: 400px;
+
+}
+
+.view-content .flow-name {
+    height: 30px;
+    line-height: 30px;
+
+}
+
+.view-content .flow-name > label {
+    width: 58px;
+    text-align: right;
+    display: inline-block;
+}
+
+.view-content .flow-name > span {
+    width: 200px;
+    text-indent: 8px;
+    display: inline-block;
+}
+
+.member-info .info-title {
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #dfdfdf;
+    line-height: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.table-right > .box-footer {
+    width: 814px;
+    position: absolute;
+    bottom: 125px;
+}
+
+.grant-member-footer {
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    margin-right: 100px;
+    border-top: 1px solid #ddd;
+}
+
+.grant-member-footer .btn-wrap {
+    width: 250px;
+    margin: 16px auto;
+}
+
+.dialog-content .right-content label i {
+    color: red;
+    transform: scale(0.6, 0.6);
+    margin-right: 6px;
+}
+
+.check-wrap {
+    line-height: 30px;
+}
+
+/* 重置密码 */
+.reset {
+    width: 520px;
+    height: 277px;
+    display: none;
+    border-top: 6px solid #4f8900;
+    font-family: "微软雅黑";
+}
+
+.reset .box-header {
+    background: #f0f0f0;
+    border-bottom: 1px solid #dedede;
+}
+
+.reset-content {
+    padding: 10px 35px;
+    font-size: 14px;
+}
+
+.reset-content #reset-password > div {
+    margin-bottom: 10px;
+}
+
+.reset-content #reset-password > div > .item-key {
+    display: inline-block;
+    width: 85px;
+    text-align: right;
+}
+
+.reset-content #reset-password > div > input {
+    width: 250px;
+    height: 32px;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+}
+
+.reset .grant-member-footer {
+    padding-top: 15px;
+    height: 60px;
+}
+
+.reset-success {
+    display: none;
+    width: 340px;
+    height: 157px;
+    border-top: 6px solid #4f8900;
+    font-size: 16px;
+
+}
+
+.reset-success .dialog-close {
+    margin-right: 5px;
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.reset-success .reset-true {
+    width: 36px;
+    height: 36px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background: url(../images/reset-success.png) no-repeat;
+}
+
+.reset-success .reset-success-txt {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.badge {
+    background: transparent;
+    color: #ff3300;
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+    top: 8px;
+}
+
+#move_user .box, #move_org_dialog .box {
+    margin-bottom: 0;
+}
+
+#move_user_treeview, #move_org_treeview {
+    height: 306px;
+    padding: 0 10px;
+    overflow: auto;
+}
+
+#move_user_treeview li, #move_org_treeview li {
+    width: 100%;
+    border: none;
+}
+
+#move_org {
+    margin-right: 0;
+    margin-left: 40px;
+}
+
+#move_org.disable {
+    color: #333;
+    background: #ebebe4;
+}
+
+.power-dialog {
+    width: 400px;
+    height: 450px;
+    border: 1px solid #dedede;
+    font-size: 12px;
+    display: none;
+    /* position: absolute;
+    left: 40%;
+    top: 150px;
+    background: #fff; */
+}
+
+.dialog-header {
+    height: 40px;
+    border-bottom: 1px solid #DEDEDE;
+    border-top: 6px solid #4f8900;
+    line-height: 34px;
+    font-size: 16px;
+    padding-left: 15px;
+}
+
+.dialog-header .dialog-close {
+    margin: 9px 15px;
+    float: right;
+}
+
+.power-dialog .power-tree span {
+    font-size: 14px;
+}
+
+.power-dialog .power-btn {
+    height: 50px;
+    clear: both;
+    text-align: center;
+}
+
+.power-dialog .link-role {
+    padding: 10px 0;
+    border-bottom: 1px dashed #dedede;
+}
+
+.power-dialog .link-role div {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+.power-dialog .link-role .role-select {
+    float: left;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.power-dialog .power-tab {
+    height: 40px;
+    border-bottom: 1px solid #dedede;
+    padding-left: 15px;
+}
+
+.power-dialog .power-tab div {
+    float: left;
+    line-height: 35px;
+    height: 35px;
+    margin-top: 5px;
+    font-size: 14px;
+    width: 80px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #dedede;
+    margin-right: 10px;
+}
+
+.power-dialog .power-tab .tab-open {
+    border-bottom: 1px solid #fff;
+}
+
+.power-dialog .power-box {
+    height: 310px;
+}
+
+.power-box .power-role-list, .power-box .power-personal-list {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.power-box .power-role-list {
+    overflow-y: auto;
+}
+
+.power-box .power-personal-list {
+    overflow: auto;
+    display: none;
+    padding: 10px 15px;
+}
+
+.power-box .power-role-list .power-role-item {
+    width: 125px;
+    height: 32px;
+    float: left;
+    padding: 7px 10px;
+    cursor: pointer;
+}
+
+.power-box .power-role-list .power-role-item:hover {
+    background: #f8f8f8;
+}
+
+.power-box .power-role-list .check-box {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.power-box .power-role-list .check-box.checked {
+    background: url(../../common/images/check.png) no-repeat center;
+}
+
+.power-box .power-role-list .item-name {
+    display: inline-block;
+    width: 85px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

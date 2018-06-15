@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuoyue.dao.MoLabelMapper">
+	<resultMap id="BaseResultMap" type="com.zhuoyue.bean.MoLabel">
+		<result column="PROJECT_CODE" jdbcType="VARCHAR" property="projectCode" />
+		<result column="BUILDING_CODE" jdbcType="VARCHAR" property="buildingCode" />
+		<result column="FLOOR_CODE" jdbcType="VARCHAR" property="floorCode" />
+		<result column="SPECIALTY_CODE" jdbcType="VARCHAR" property="specialtyCode" />
+		<result column="PART_CODE" jdbcType="VARCHAR" property="partCode" />
+		<result column="PART_POSITION_X" jdbcType="VARCHAR" property="partPositionX" />
+		<result column="PART_POSITION_Y" jdbcType="VARCHAR" property="partPositionY" />
+		<result column="PART_POSITION_Z" jdbcType="VARCHAR" property="partPositionZ" />
+		<result column="LABEL_CONTENT" jdbcType="VARCHAR" property="labelContent" />
+		<result column="LABEL_DATE" jdbcType="VARCHAR" property="labelDate" />
+		<result column="LABEL_AUDIO_PATH" jdbcType="VARCHAR" property="labelAudioPath" />
+		<result column="LABEL_AUDIO_NAME" jdbcType="VARCHAR" property="labelAudioName" />
+		<result column="LABELE_IMG_PATH" jdbcType="VARCHAR" property="labeleImgPath" />
+		<result column="LABELE_IMG_NAME" jdbcType="VARCHAR" property="labeleImgName" />
+	</resultMap>
+	<insert id="insert" parameterType="com.zhuoyue.bean.MoLabel">
+		insert into MO_LABEL
+		(PROJECT_CODE, BUILDING_CODE, FLOOR_CODE,
+		SPECIALTY_CODE, PART_CODE,
+		PART_POSITION_X,
+		PART_POSITION_Y, PART_POSITION_Z, LABEL_CONTENT,
+		LABEL_DATE, LABEL_AUDIO_PATH, LABEL_AUDIO_NAME,
+		LABELE_IMG_PATH,
+		LABELE_IMG_NAME)
+		values (#{projectCode,jdbcType=VARCHAR},
+		#{buildingCode,jdbcType=VARCHAR},
+		#{floorCode,jdbcType=VARCHAR},
+		#{specialtyCode,jdbcType=VARCHAR}, #{partCode,jdbcType=VARCHAR},
+		#{partPositionX,jdbcType=VARCHAR},
+		#{partPositionY,jdbcType=VARCHAR},
+		#{partPositionZ,jdbcType=VARCHAR},
+		#{labelContent,jdbcType=VARCHAR},
+		#{labelDate,jdbcType=VARCHAR}, #{labelAudioPath,jdbcType=VARCHAR},
+		#{labelAudioName,jdbcType=VARCHAR},
+		#{labeleImgPath,jdbcType=VARCHAR},
+		#{labeleImgName,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.zhuoyue.bean.MoLabel">
+		insert into MO_LABEL
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="projectCode != null">
+				PROJECT_CODE,
+			</if>
+			<if test="buildingCode != null">
+				BUILDING_CODE,
+			</if>
+			<if test="floorCode != null">
+				FLOOR_CODE,
+			</if>
+			<if test="specialtyCode != null">
+				SPECIALTY_CODE,
+			</if>
+			<if test="partCode != null">
+				PART_CODE,
+			</if>
+			<if test="partPositionX != null">
+				PART_POSITION_X,
+			</if>
+			<if test="partPositionY != null">
+				PART_POSITION_Y,
+			</if>
+			<if test="partPositionZ != null">
+				PART_POSITION_Z,
+			</if>
+			<if test="labelContent != null">
+				LABEL_CONTENT,
+			</if>
+			<if test="labelDate != null">
+				LABEL_DATE,
+			</if>
+			<if test="labelAudioPath != null">
+				LABEL_AUDIO_PATH,
+			</if>
+			<if test="labelAudioName != null">
+				LABEL_AUDIO_NAME,
+			</if>
+			<if test="labeleImgPath != null">
+				LABELE_IMG_PATH,
+			</if>
+			<if test="labeleImgName != null">
+				LABELE_IMG_NAME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="projectCode != null">
+				#{projectCode,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingCode != null">
+				#{buildingCode,jdbcType=VARCHAR},
+			</if>
+			<if test="floorCode != null">
+				#{floorCode,jdbcType=VARCHAR},
+			</if>
+			<if test="specialtyCode != null">
+				#{specialtyCode,jdbcType=VARCHAR},
+			</if>
+			<if test="partCode != null">
+				#{partCode,jdbcType=VARCHAR},
+			</if>
+			<if test="partPositionX != null">
+				#{partPositionX,jdbcType=VARCHAR},
+			</if>
+			<if test="partPositionY != null">
+				#{partPositionY,jdbcType=VARCHAR},
+			</if>
+			<if test="partPositionZ != null">
+				#{partPositionZ,jdbcType=VARCHAR},
+			</if>
+			<if test="labelContent != null">
+				#{labelContent,jdbcType=VARCHAR},
+			</if>
+			<if test="labelDate != null">
+				#{labelDate,jdbcType=VARCHAR},
+			</if>
+			<if test="labelAudioPath != null">
+				#{labelAudioPath,jdbcType=VARCHAR},
+			</if>
+			<if test="labelAudioName != null">
+				#{labelAudioName,jdbcType=VARCHAR},
+			</if>
+			<if test="labeleImgPath != null">
+				#{labeleImgPath,jdbcType=VARCHAR},
+			</if>
+			<if test="labeleImgName != null">
+				#{labeleImgName,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<sql id="Base_Column_VO">
+		PROJECT_CODE   "projectCode", BUILDING_CODE "buildingCode", FLOOR_CODE "floorCode", SPECIALTY_CODE "specialtyCode" , PART_CODE "partCode",
+		PART_POSITION_X "partPositionX",PART_POSITION_Y "partPositionY", PART_POSITION_Z "partPositionZ", LABEL_CONTENT "labelContent"  , 
+		label_date "labelDate",		label_audio_name  "labelAudioName",		labele_img_name "labeleImgName" 
+		
+	</sql> 
+	<select id="getLabelList" resultType="com.zhuoyue.vo.LabelVo" parameterType="com.zhuoyue.vo.LabelVo">
+		select 
+		<include refid="Base_Column_VO" />
+		from MO_LABEL  label
+		<trim prefix="WHERE" prefixOverrides="AND"  >
+			<if test="projectCode != null">
+				label.project_code = #{projectCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="buildingCode != null">
+				AND label.building_code = #{buildingCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="floorCode != null">
+				AND  label.floor_code = #{floorCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="specialtyCode != null">
+				AND  label.specialty_code = #{specialtyCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="partCode != null">
+				AND  label.part_code = #{partCode,jdbcType=VARCHAR} 
+			</if>		
+		</trim>  
+	</select>
+
+
+<!-- 	<select id="getLabelList" resultType="com.zhuoyue.vo.LabelVo" parameterType="com.zhuoyue.vo.LabelVo">
+		select 
+		<include refid="Base_Column_VO" />
+		from MO_LABEL
+		where part_code in
+		<foreach collection="list" index="index" item="item" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</select> -->
+
+
+    <sql id="Base_Column_List">
+	    PROJECT_CODE, BUILDING_CODE, FLOOR_CODE, SPECIALTY_CODE, PART_CODE, PART_POSITION_X, 
+	    PART_POSITION_Y, PART_POSITION_Z, LABEL_CONTENT, LABEL_DATE, LABEL_AUDIO_PATH, LABEL_AUDIO_NAME, 
+	    LABELE_IMG_PATH, LABELE_IMG_NAME
+    </sql>	
+    <select id="getMolableContent"  resultMap="BaseResultMap" parameterType="com.zhuoyue.vo.LabelVo"   >
+        SELECT  <include refid="Base_Column_List" />
+        FROM MO_LABEL  label
+		<trim prefix="WHERE" prefixOverrides="AND"  >
+			<if test="projectCode != null">
+				label.project_code = #{projectCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="buildingCode != null">
+				AND label.building_code = #{buildingCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="floorCode != null">
+				AND  label.floor_code = #{floorCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="specialtyCode != null">
+				AND  label.specialty_code = #{specialtyCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="partCode != null">
+				AND  label.part_code = #{partCode,jdbcType=VARCHAR} 
+			</if>		
+		</trim>        
+    </select>
+    
+    
+    <select id="getMolableImage" resultType="map"  parameterType="com.zhuoyue.vo.LabelVo" >
+        SELECT
+         	label.labele_img_path as "labeleImgPath" , label.labele_img_name as "labeleImgName"
+        FROM MO_LABEL  label
+        WHERE label.PART_CODE=#{partCode}
+        	AND  label.label_date = #{labelDate,jdbcType=VARCHAR} 
+    </select>
+
+    <select id="getMolableAudio" resultType="map"   parameterType="com.zhuoyue.vo.LabelVo" >
+        SELECT label.label_audio_path as "labelAudioPath" , label.label_audio_name as "labelAudioName"
+        FROM MO_LABEL  label
+        WHERE label.PART_CODE=#{partCode}
+        	AND  label.label_date = #{labelDate,jdbcType=VARCHAR} 
+    </select>
+
+
+	<delete id="deleteMoLable"  parameterType="com.zhuoyue.vo.LabelVo" >
+		DELETE FROM MO_LABEL label 
+		<trim prefix="WHERE" prefixOverrides="AND"  >
+			<if test="projectCode != null">
+				label.project_code = #{projectCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="buildingCode != null">
+				AND label.building_code = #{buildingCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="floorCode != null">
+				AND  label.floor_code = #{floorCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="specialtyCode != null">
+				AND  label.specialty_code = #{specialtyCode,jdbcType=VARCHAR} 
+			</if>
+			<if test="partCode != null">
+				AND  label.part_code = #{partCode,jdbcType=VARCHAR} 
+			</if>		
+			<if test="labelDate != null">
+				AND  label.label_date = #{labelDate,jdbcType=VARCHAR} 
+			</if>
+		</trim>
+	</delete>
+
+	 
+</mapper>

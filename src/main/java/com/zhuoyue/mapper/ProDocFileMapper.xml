@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuoyue.dao.ProDocFileMapper">
+	<resultMap id="BaseResultMap" type="com.zhuoyue.bean.ProDocFile">
+		<result column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="PROJECT_ID" jdbcType="VARCHAR" property="projectId" />
+		<result column="BUILDING_ID" jdbcType="VARCHAR" property="buildingId" />
+		<result column="FLOOR_ID" jdbcType="VARCHAR" property="floorId" />
+		<result column="SPECIALTY_ID" jdbcType="VARCHAR" property="specialtyId" />
+		<result column="DOC_FILE_SIZE" jdbcType="VARCHAR" property="docFileSize" />
+		<result column="DOC_FILE_TYPE" jdbcType="VARCHAR" property="docFileType" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="DOC_FILE_NAME" jdbcType="VARCHAR" property="docFileName" />
+		<result column="DOC_FILE_EXTE" jdbcType="VARCHAR" property="docFileExte" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.zhuoyue.bean.ProDocFile">
+		<result column="DOC_FILE" jdbcType="BLOB" property="docFile" />
+	</resultMap>
+	<sql id="Blob_Column_List">
+		DOC_FILE
+	</sql>
+	<insert id="insert" parameterType="com.zhuoyue.bean.ProDocFile">
+		insert into PRO_DOC_FILE (ID, PROJECT_ID, BUILDING_ID,
+		FLOOR_ID, SPECIALTY_ID, DOC_FILE_SIZE,
+		DOC_FILE_TYPE, CREATE_TIME, DOC_FILE_NAME,
+		DOC_FILE_EXTE, DOC_FILE)
+		values (#{id,jdbcType=VARCHAR}, #{projectId,jdbcType=VARCHAR},
+		#{buildingId,jdbcType=VARCHAR},
+		#{floorId,jdbcType=VARCHAR}, #{specialtyId,jdbcType=VARCHAR}, #{docFileSize,jdbcType=VARCHAR},
+		#{docFileType,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+		#{docFileName,jdbcType=VARCHAR},
+		#{docFileExte,jdbcType=VARCHAR}, #{docFile,jdbcType=BLOB})
+	</insert>
+	<insert id="insertSelective" parameterType="com.zhuoyue.bean.ProDocFile">
+		<selectKey keyProperty="id" resultType="String" order="BEFORE">
+			select sys_guid() from dual
+		</selectKey>
+		insert into PRO_DOC_FILE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="projectId != null">
+				PROJECT_ID,
+			</if>
+			<if test="buildingId != null">
+				BUILDING_ID,
+			</if>
+			<if test="floorId != null">
+				FLOOR_ID,
+			</if>
+			<if test="specialtyId != null">
+				SPECIALTY_ID,
+			</if>
+			<if test="docFileSize != null">
+				DOC_FILE_SIZE,
+			</if>
+			<if test="docFileType != null">
+				DOC_FILE_TYPE,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="docFileName != null">
+				DOC_FILE_NAME,
+			</if>
+			<if test="docFileExte != null">
+				DOC_FILE_EXTE,
+			</if>
+			<if test="docFile != null">
+				DOC_FILE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="projectId != null">
+				#{projectId,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingId != null">
+				#{buildingId,jdbcType=VARCHAR},
+			</if>
+			<if test="floorId != null">
+				#{floorId,jdbcType=VARCHAR},
+			</if>
+			<if test="specialtyId != null">
+				#{specialtyId,jdbcType=VARCHAR},
+			</if>
+			<if test="docFileSize != null">
+				#{docFileSize,jdbcType=VARCHAR},
+			</if>
+			<if test="docFileType != null">
+				#{docFileType,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="docFileName != null">
+				#{docFileName,jdbcType=VARCHAR},
+			</if>
+			<if test="docFileExte != null">
+				#{docFileExte,jdbcType=VARCHAR},
+			</if>
+			<if test="docFile != null">
+				#{docFile,jdbcType=BLOB},
+			</if>
+		</trim>
+	</insert>
+	
+	
+	<sql id="Base_Column_List">
+		id, project_id, building_id, floor_id, specialty_id, doc_file_size, doc_file_type, create_time, doc_file_name, doc_file_exte 
+	</sql>	
+	<select id="getProDocListByProCode" parameterType="java.util.Map"		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from pro_doc_file
+		where PROJECT_ID =#{projectId,jdbcType=VARCHAR}
+		<if test="orderState != null">
+			<choose>
+				<when test="orderState == 1">
+					order by create_time desc 
+				</when>
+				<when test="orderState == 0">
+					order by doc_file_name asc
+				</when>
+			</choose>
+		</if>
+	</select>	
+	
+	<sql id="Base_Column_List_with_BloB">
+		id, project_id, building_id, floor_id, specialty_id, doc_file_size, doc_file_type, create_time, doc_file_name, doc_file_exte, doc_file
+	</sql>	
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"	resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List_with_BloB" />
+		from pro_doc_file
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>	
+	
+	<select id="searchDocFileByName" parameterType="com.zhuoyue.bean.ProDocFile" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from pro_doc_file
+		where  1=1 
+		<if test="docFileName != null">
+            AND doc_file_name LIKE CONCAT(CONCAT('%',#{docFileName}),'%')
+        </if>
+        order by doc_file_name asc
+	</select>	
+	
+	
+</mapper>

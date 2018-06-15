@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuoyue.dao.CadDesignPaperMapper">
+	<resultMap id="BaseResultMap" type="com.zhuoyue.bean.CadDesignPaper">
+		<result column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="CAD_FILE_NAME" jdbcType="VARCHAR" property="cadFileName" />
+		<result column="PROJECT_ID" jdbcType="VARCHAR" property="projectId" />
+		<result column="BUILDING_ID" jdbcType="VARCHAR" property="buildingId" />
+		<result column="FLOOR_ID" jdbcType="VARCHAR" property="floorId" />
+		<result column="SPECIALTY_ID" jdbcType="VARCHAR" property="specialtyId" />
+		<result column="CAD_FILE_SIZE" jdbcType="VARCHAR" property="cadFileSize" />
+		<result column="CAD_FILE_TYPE" jdbcType="VARCHAR" property="cadFileType" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.zhuoyue.bean.CadDesignPaper">
+		<result column="CAD_FILE" jdbcType="BLOB" property="cadFile" />
+	</resultMap>
+	<sql id="Blob_Column_List">
+		CAD_FILE
+	</sql>
+	<insert id="insert" parameterType="com.zhuoyue.bean.CadDesignPaper">
+		<selectKey keyProperty="id" resultType="String" order="BEFORE" >
+            select sys_guid() from dual
+        </selectKey>	
+		insert into CAD_DESIGN_PAPER
+		(ID, CAD_FILE_NAME, PROJECT_ID,
+		BUILDING_ID, FLOOR_ID,
+		SPECIALTY_ID,
+		CAD_FILE_SIZE, CAD_FILE_TYPE, CREATE_TIME,
+		CAD_FILE)
+		values (#{id,jdbcType=VARCHAR}, #{cadFileName,jdbcType=VARCHAR},
+		#{projectId,jdbcType=VARCHAR},
+		#{buildingId,jdbcType=VARCHAR},
+		#{floorId,jdbcType=VARCHAR}, #{specialtyId,jdbcType=VARCHAR},
+		#{cadFileSize,jdbcType=VARCHAR}, #{cadFileType,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP},
+		#{cadFile,jdbcType=BLOB})
+	</insert>
+	<insert id="insertSelective" parameterType="com.zhuoyue.bean.CadDesignPaper">
+		<selectKey keyProperty="id" resultType="String" order="BEFORE" >
+            select sys_guid() from dual
+        </selectKey>
+		insert into CAD_DESIGN_PAPER
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="cadFileName != null">
+				CAD_FILE_NAME,
+			</if>
+			<if test="projectId != null">
+				PROJECT_ID,
+			</if>
+			<if test="buildingId != null">
+				BUILDING_ID,
+			</if>
+			<if test="floorId != null">
+				FLOOR_ID,
+			</if>
+			<if test="specialtyId != null">
+				SPECIALTY_ID,
+			</if>
+			<if test="cadFileSize != null">
+				CAD_FILE_SIZE,
+			</if>
+			<if test="cadFileType != null">
+				CAD_FILE_TYPE,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="cadFile != null">
+				CAD_FILE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="cadFileName != null">
+				#{cadFileName,jdbcType=VARCHAR},
+			</if>
+			<if test="projectId != null">
+				#{projectId,jdbcType=VARCHAR},
+			</if>
+			<if test="buildingId != null">
+				#{buildingId,jdbcType=VARCHAR},
+			</if>
+			<if test="floorId != null">
+				#{floorId,jdbcType=VARCHAR},
+			</if>
+			<if test="specialtyId != null">
+				#{specialtyId,jdbcType=VARCHAR},
+			</if>
+			<if test="cadFileSize != null">
+				#{cadFileSize,jdbcType=VARCHAR},
+			</if>
+			<if test="cadFileType != null">
+				#{cadFileType,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cadFile != null">
+				#{cadFile,jdbcType=BLOB},
+			</if>
+		</trim>
+	</insert>
+
+	<sql id="Base_Column_List">
+		id, cad_file_name , PROJECT_ID , BUILDING_ID, FLOOR_ID,
+		SPECIALTY_ID, cad_file_size, cad_file_type, create_time
+	</sql>
+	<sql id="Base_Column_List_with_BloB">
+		id, cad_file_name, PROJECT_ID, BUILDING_ID, FLOOR_ID,
+		SPECIALTY_ID, cad_file_size, cad_file_type, cad_file, create_time
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"	resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List_with_BloB" />
+		from CAD_DESIGN_PAPER
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>
+
+	<select id="getCadViewListByProCode" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from CAD_DESIGN_PAPER
+		where PROJECT_ID =#{projectId,jdbcType=VARCHAR}
+		<if test="orderState != null">
+			<choose>
+				<when test="orderState == 1">
+					order by create_time desc 
+				</when>
+				<when test="orderState == 0">
+					order by cad_file_name asc
+				</when>
+			</choose>
+		</if>
+	</select>
+
+	<select id="getCadViewListByProCodeAndType" parameterType="java.util.Map"  resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from CAD_DESIGN_PAPER
+		<trim prefix="WHERE" prefixOverrides="AND"  >
+			<if test="projectId != null">
+				PROJECT_ID =#{projectId,jdbcType=VARCHAR}
+			</if>
+			<if test="type != null">
+				AND  CAD_FILE_TYPE = #{type,jdbcType=VARCHAR} 
+			</if>
+		</trim>  
+		<if test="orderState != null">
+			<choose>
+				<when test="orderState == 1">
+					order by create_time desc 
+				</when>
+				<when test="orderState == 0">
+					order by cad_file_name asc
+				</when>
+			</choose>
+		</if>
+	</select>
+	<select id="searchCadByName" parameterType="com.zhuoyue.bean.CadDesignPaper" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from CAD_DESIGN_PAPER
+		where  1=1 
+		<if test="cadFileName!=null">
+            AND cad_file_name LIKE CONCAT(CONCAT('%',#{cadFileName}),'%')
+        </if>
+        order by cad_file_name asc
+	</select>
+
+
+</mapper>
+ 

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuoyue.dao.MoFamilyTypeMapper">
+
+
+    <resultMap id="BaseResultMap" type="com.zhuoyue.bean.MoFamilyType">
+        <result column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="FAMILY" jdbcType="VARCHAR" property="family"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="MODE_ID" jdbcType="VARCHAR" property="modeId"/>
+        <result column="FILE_PATH" jdbcType="VARCHAR" property="filePath"/>
+        <result column="CATEGORY_ID" jdbcType="VARCHAR" property="categoryId"/>
+        <result column="FLAG" jdbcType="VARCHAR" property="family"/>
+
+    </resultMap>
+
+
+    <sql id="BaseColumn">
+        ID, FAMILY , NAME , MODE_ID , FILE_PATH , CATEGORY_ID,FLAG
+
+    </sql>
+
+
+    <select id="getFamilyTypeListByCategoryId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumn"/>
+        FROM MO_FAMILY_TYPE mft
+        WHERE mft.MODE_ID=#{modeId}
+        AND mft.CATEGORY_ID=#{categoryId}
+    </select>
+    <select id="getFamilyTypeId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumn"/>
+        FROM MO_FAMILY_TYPE mft
+        WHERE mft.ID=#{familyTypeId}
+    </select>
+    <select id="getFamilyType" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumn"/>
+        FROM MO_FAMILY_TYPE mft
+        WHERE mft.MODE_ID=#{modeId}
+        AND mft.ID=#{familyTypeId}
+    </select>
+
+
+    <select id="getFamilyTypeListByCategoryIdOrFlag" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumn"/>
+
+        FROM MO_FAMILY_TYPE mft
+        WHERE mft.MODE_ID=#{modeId}
+        AND mft.CATEGORY_ID=#{categoryId}
+        AND mft.FLAG=#{flag}
+    </select>
+
+
+    <insert id="insert" parameterType="com.zhuoyue.bean.MoFamilyType">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.String">
+            Oracle
+        </selectKey>
+        insert into MO_FAMILY_TYPE (FAMILY, NAME, MODE_ID,
+        FILE_PATH, CATEGROR_ID)
+        values (#{family,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{modeId,jdbcType=VARCHAR},
+        #{filePath,jdbcType=VARCHAR}, #{categoryId,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zhuoyue.bean.MoFamilyType">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.String">
+            Oracle
+        </selectKey>
+        insert into MO_FAMILY_TYPE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="family != null">
+                FAMILY,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="modeId != null">
+                MODE_ID,
+            </if>
+            <if test="filePath != null">
+                FILE_PATH,
+            </if>
+            <if test="categoryId != null">
+                CATEGROR_ID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="family != null">
+                #{family,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="modeId != null">
+                #{modeId,jdbcType=VARCHAR},
+            </if>
+            <if test="filePath != null">
+                #{filePath,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryId != null">
+                #{categoryId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <insert id="saveMoFamilyTypes" parameterType="java.util.List">
+        INSERT INTO mo_family_type
+        (ID, FAMILY, NAME, MODE_ID, FILE_PATH, CATEGORY_ID,FLAG)
+
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT
+            #{item.id ,jdbcType=VARCHAR},
+            #{item.family ,jdbcType=VARCHAR},
+            #{item.name ,jdbcType=VARCHAR},
+            #{item.modeId ,jdbcType=VARCHAR},
+            #{item.filePath ,jdbcType=VARCHAR},
+            #{item.categoryId ,jdbcType=VARCHAR},
+            #{item.flag ,jdbcType=VARCHAR}
+            FROM dual
+        </foreach>
+
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuoyue.dao.MoStempInfoMapper">
+    <resultMap id="BaseResultMap" type="com.zhuoyue.bean.MoStempInfo">
+        <result column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="STEMP_NAME" jdbcType="VARCHAR" property="stempName"/>
+        <result column="USER_ID" jdbcType="VARCHAR" property="userId"/>
+        <result column="STEMP_STATE" jdbcType="VARCHAR" property="stempState"/>
+        <result column="CREATE_TIME" jdbcType="VARCHAR" property="createTime"/>
+        <result column="MODE_ID" jdbcType="VARCHAR" property="modeId"/>
+        <result column="MANAGER_TYPE" jdbcType="VARCHAR" property="managerType"/>
+    </resultMap>
+
+
+    <sql id="BaseColumn">
+        ID,STEMP_NAME,USER_ID,STEMP_STATE,CREATE_TIME,MODE_ID,MANAGER_TYPE
+    </sql>
+
+
+    <select id="getStempInfoListByType" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumn"/>
+        FROM MO_STEMP_INFO msi
+        WHERE msi.MANAGER_TYPE=#{type}
+    </select>
+
+
+    <insert id="insert" parameterType="com.zhuoyue.bean.MoStempInfo">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.String">
+            Oracle
+        </selectKey>
+        insert into MO_STEMP_INFO (STEMP_NAME, USER_ID, STEMP_STATE,
+        CREATE_TIME, MODE_ID, MANAGER_TYPE
+        )
+        values (#{stempName,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{stempState,jdbcType=VARCHAR},
+        #{createTime,jdbcType=VARCHAR}, #{modeId,jdbcType=VARCHAR}, #{managerType,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.zhuoyue.bean.MoStempInfo">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.String">
+            Oracle
+        </selectKey>
+        insert into MO_STEMP_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stempName != null">
+                STEMP_NAME,
+            </if>
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="stempState != null">
+                STEMP_STATE,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="modeId != null">
+                MODE_ID,
+            </if>
+            <if test="managerType != null">
+                MANAGER_TYPE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stempName != null">
+                #{stempName,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="stempState != null">
+                #{stempState,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="modeId != null">
+                #{modeId,jdbcType=VARCHAR},
+            </if>
+            <if test="managerType != null">
+                #{managerType,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+</mapper>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8"/>
+    <title>用户管理</title>
+    <!--<div th:replace="common/taglibs :: taglibs"></div>    -->
+    <!--引入jquery等js、css文件在最前面-->
+
+    <link rel="stylesheet" th:href="@{/common/css/font-awesome.css}"/>
+    <link rel="stylesheet" th:href="@{/common/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/common/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css}"/>
+    <link rel="stylesheet" th:href="@{/model/css/index.css}"/>
+
+
+    <!--ajax请求定义以后转移到公共模块引用-->
+    <script th:src="@{/common/plugins/jquery/jquery-1.12.0.min.js}"></script>
+    <script th:src="@{/common/plugins/bootstrap/js/bootstrap.min.js}"></script>
+    <!--ajax请求定义以后转移到公共模块引用-->
+    <script th:src="@{/common/js/web_service.js }"></script>
+
+
+    <!--ztree-->
+    <script th:src="@{/common/plugins/zTree_v3/js/jquery.ztree.core.js}"></script>
+    <script th:src="@{/common/plugins/zTree_v3/js/jquery.ztree.excheck.js}"></script>
+
+
+    <!--未知作用待删除-->
+    <!--<script th:src="@{/common/plugins/threejs/renderers/Projector.js}"></script>-->
+    <!--<script th:src="@{/common/plugins/threejs/controls/TrackballControls.js}"></script>-->
+    <!--<script th:src="@{/common/plugins/threejs/loaders/MTLLoader.js}"></script>-->
+    <!--<link rel="stylesheet" th:href="@{/common/css/demo.css}"/>-->
+
+    <!--three.js依赖-->
+    <script th:src="@{/common/plugins/threejs/three.js}"></script>
+    <!--使用orbit controls插件（轨道控制）来控制模型交互动作-->
+    <script th:src="@{/common/plugins/threejs/controls/OrbitControls.js}"></script>
+    <!--使用性能插件stats进行性能监听-->
+    <script th:src="@{/common/plugins/threejs/libs/stats.min.js}"></script>
+    <!--使用dat.GUI显示右上角参数-->
+    <script th:src="@{/common/plugins/threejs/libs/dat.gui.min.js}"></script>
+    <!--使用Detector.js插件实现兼容性检测-->
+    <script th:src="@{/common/plugins/threejs/Detector.js}"></script>
+    <!--使用OBJLoader.js加载.obj文件-->
+    <script th:src="@{/common/plugins/threejs/loaders/OBJLoader.js}"></script>
+    <script th:src="@{/common/plugins/threejs/loaders/OBJLoader2.js}"></script>
+
+
+    <!--本页面===3D显示===js脚本-->
+    <script th:src="@{/model/js/model_operator.js}"></script>
+    <!--本页面===左侧树====js脚本-->
+    <script th:src="@{/model/js/model_tree.js}"></script>
+
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="tree-wrapper" id="treeDiv">
+        <ul id="tree" class="ztree"></ul>
+    </div>
+    <div class="content-wrapper" id="container">
+    </div>
+
+    <div id="modelProperty" class="property-wrapper" style="z-index: 2;">
+        <div class="header"><span class="text overflowEllipsis">50 x 150 mm</span> <i class="icon-close" title="关闭"></i>
+        </div>
+        <ul class="content">
+            <!--v-for-start-->
+            <li class="item">
+                <div class="title"><span>基本属性</span> <i class="iconArrow icon-arrowdown16"></i></div>
+                <ul class="itemList" style="display: none;">
+                    <!--v-for-start-->
+                    <li class="subItem">
+                        <span class="key overflowEllipsis" title="专业">专业</span>
+                        <span class="value overflowEllipsis" title="装饰">装饰</span></li>
+                    <li class="subItem">
+                        <span class="key overflowEllipsis" title="楼层">楼层</span>
+                        <span class="value overflowEllipsis" title="5F">5F</span></li>
+                    <li class="subItem">
+                        <span class="key overflowEllipsis" title="类别">类别</span>
+                        <span class="value overflowEllipsis" title="幕墙竖梃">幕墙竖梃</span></li>
+                    <li class="subItem">
+                        <span class="key overflowEllipsis" title="族">族</span>
+                        <span class="value overflowEllipsis" title="矩形竖梃">矩形竖梃</span></li>
+                    <li class="subItem">
+                        <span class="key overflowEllipsis" title="族类型">族类型</span>
+                        <span class="value overflowEllipsis" title="50 x 150 mm">50 x 150 mm</span></li><!--v-for-end-->
+                </ul>
+            </li>
+        </ul><!--v-if-->
+        <div class="tipText"></div>
+    </div>
+
+    <!--<div class="foot-bar">-->
+    <!--<btn class="btn btn-default tree-btn">树</btn>-->
+    <!--<btn class="btn btn-default property-btn">属性</btn>-->
+    <!--</div>-->
+    <div id="mmh-toolbar" class="mmh-toolbar">
+        <button type="button" class="btn btn-primary icon-tree" id="tree-hook">树</button>
+        <button type="button" class="btn btn-success icon-properties" id="property_model">属性</button>
+        <button type="button" class="btn btn-info icon-settings">设置</button>
+    </div>
+</div>
+<!--<div id="elementContainer"></div>-->
+<!--
+   <div >
+       <ul id="tree" class="ztree"></ul>
+   </div>
+   <div id="container">
+   </div>
+-->
+
+</body>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        init();
+
+        $('#tree-hook').click(function () {
+            $("#treeDiv").toggle();
+        })
+
+        $('#property_model').click(function () {
+            $("#modelProperty").toggle();
+        })
+
+
+    });
+</script>
+</html>

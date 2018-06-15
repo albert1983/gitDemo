@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuoyue.dao.MoUserInfoVoMapper">
+	<resultMap id="BaseResultMap" type="com.zhuoyue.vo.MoUserInfoVo">
+		<result column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+		<result column="USER_PHONE" jdbcType="VARCHAR" property="userPhone" />
+		<result column="AVATAR_URL" jdbcType="VARCHAR" property="avatarUrl" />
+		<result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
+		<result column="EMAIL" jdbcType="VARCHAR" property="email" />
+		<result column="COMPANY" jdbcType="VARCHAR" property="company" />
+		<result column="COMPANYTYPE" jdbcType="VARCHAR" property="companytype" />
+		<result column="POSITION" jdbcType="VARCHAR" property="position" />
+		<result column="PROJECTCODE" jdbcType="VARCHAR" property="projectcode" />
+		<result column="TOKEN" jdbcType="VARCHAR" property="token" />
+		<result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+	</resultMap>
+	<insert id="insert" parameterType="com.zhuoyue.vo.MoUserInfoVo">
+		insert into MO_USER_INFO (ID, USER_NAME, USER_PHONE,
+		AVATAR_URL, ACCOUNT, EMAIL,
+		COMPANY, COMPANYTYPE, POSITION,
+		PROJECTCODE, TOKEN, PASSWORD
+		)
+		values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
+		#{userPhone,jdbcType=VARCHAR},
+		#{avatarUrl,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+		#{company,jdbcType=VARCHAR}, #{companytype,jdbcType=VARCHAR},
+		#{position,jdbcType=VARCHAR},
+		#{projectcode,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.zhuoyue.vo.MoUserInfoVo">
+		insert into MO_USER_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="userName != null">
+				USER_NAME,
+			</if>
+			<if test="userPhone != null">
+				USER_PHONE,
+			</if>
+			<if test="avatarUrl != null">
+				AVATAR_URL,
+			</if>
+			<if test="account != null">
+				ACCOUNT,
+			</if>
+			<if test="email != null">
+				EMAIL,
+			</if>
+			<if test="company != null">
+				COMPANY,
+			</if>
+			<if test="companytype != null">
+				COMPANYTYPE,
+			</if>
+			<if test="position != null">
+				POSITION,
+			</if>
+			<if test="projectcode != null">
+				PROJECTCODE,
+			</if>
+			<if test="token != null">
+				TOKEN,
+			</if>
+			<if test="password != null">
+				PASSWORD,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userPhone != null">
+				#{userPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="avatarUrl != null">
+				#{avatarUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="account != null">
+				#{account,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="company != null">
+				#{company,jdbcType=VARCHAR},
+			</if>
+			<if test="companytype != null">
+				#{companytype,jdbcType=VARCHAR},
+			</if>
+			<if test="position != null">
+				#{position,jdbcType=VARCHAR},
+			</if>
+			<if test="projectcode != null">
+				#{projectcode,jdbcType=VARCHAR},
+			</if>
+			<if test="token != null">
+				#{token,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+
+	<sql id="Base_Column_List">
+		id, user_name, user_phone, avatar_url, account, email,
+		company, companytype, position, projectcode, token, password
+	</sql>
+
+	<select id="selectByUserPhone" parameterType="com.zhuoyue.vo.MoUserInfoVo"	resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from mo_user_info
+		where user_phone = #{userPhone,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByUserById" parameterType="String"	resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from mo_user_info
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+
+</mapper>
