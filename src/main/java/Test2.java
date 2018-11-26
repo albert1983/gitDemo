@@ -20,12 +20,14 @@ public class Test2 {
 				return b.compareTo(a);
 			}
 		});
-
+		
+		System.out.println("ffffff");
+		
 		Comparator<String> cc = (a, b) -> b.compareTo(a);
 
 		Collections.sort(names, (a, b) -> b.compareTo(a));
 		System.out.println(names);
-
+		System.out.println("ffffff");
 		String str = "123";
 
 		Converter<String, Integer> converter = (from) -> Integer.parseInt(from + str);
