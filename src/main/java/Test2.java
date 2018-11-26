@@ -27,7 +27,7 @@ public class Test2 {
 
 		Collections.sort(names, (a, b) -> b.compareTo(a));
 		System.out.println(names);
-		System.out.println("ffffff");
+		System.out.println("ffffffffffffff");
 		String str = "123";
 
 		Converter<String, Integer> converter = (from) -> Integer.parseInt(from + str);
@@ -87,9 +87,9 @@ public class Test2 {
 		task.run();
 		Thread thread = new Thread(task);
 		thread.start();
-
+	System.out.println("asdfasfasf");
 		System.out.println("Done!");
-		System.out.println("!");
+		System.out.println("asdfasfasf");
 	}
 
 }
