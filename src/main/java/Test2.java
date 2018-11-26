@@ -86,8 +86,8 @@ public class Test2 {
 		Thread thread = new Thread(task);
 		thread.start();
 
-		System.out.println("Done!");	
- 
+		System.out.println("Done!");
+		System.out.println("!");
 	}
 
 }
