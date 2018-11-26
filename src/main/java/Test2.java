@@ -22,7 +22,7 @@ public class Test2 {
 		});
 		
 
-		System.out.println("ddddddd");
+		System.out.println("dddddddeeee");
 
 		Comparator<String> cc = (a, b) -> b.compareTo(a);
 
