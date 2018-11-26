@@ -21,13 +21,13 @@ public class Test2 {
 			}
 		});
 		
-		System.out.println("ffffff");
+		System.out.println("月");
 		
 		Comparator<String> cc = (a, b) -> b.compareTo(a);
 
 		Collections.sort(names, (a, b) -> b.compareTo(a));
 		System.out.println(names);
-		System.out.println("ffffff");
+
 		String str = "123";
 
 		Converter<String, Integer> converter = (from) -> Integer.parseInt(from + str);
