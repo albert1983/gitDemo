@@ -21,14 +21,14 @@ public class Test2 {
 			}
 		});
 		
-		System.out.println("ffffff");
+		System.out.println("ddddddd");
 		
 		Comparator<String> cc = (a, b) -> b.compareTo(a);
 
 		Collections.sort(names, (a, b) -> b.compareTo(a));
 		System.out.println(names);
 
-		System.out.println("ffffffffffffff");
+		System.out.println("fffffffddddddfffffff");
 		String str = "123";
 
 		Converter<String, Integer> converter = (from) -> Integer.parseInt(from + str);
