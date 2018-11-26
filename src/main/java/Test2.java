@@ -21,7 +21,7 @@ public class Test2 {
 			}
 		});
 		
-		System.out.println("ffffff");
+		System.out.println("");
 		
 		Comparator<String> cc = (a, b) -> b.compareTo(a);
 
